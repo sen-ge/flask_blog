@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+    {% endblock %}
+    </title>
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="../static/js/comm.js"></script>
+
+    {% block page_css %}
+
+    {% endblock %}
+
+    {% block page_jq %}
+
+    {% endblock %}
+
+</head>
+<body  >
+<div id="warp" class="container-fluid" style="font-style: italic">
+    <div id="head" >
+        {% block page_head  %}
+
+        {% endblock %}
+    </div>
+    <div id="main" style="position:relative;margin-top: auto">
+        {% block page_main %}
+
+        {% endblock %}
+    </div>
+    <div>
+        {% block left %}
+
+
+{% endblock %}
+    </div>
+    <div id="footer">
+        {% block page_footer %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>

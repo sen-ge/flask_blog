@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="http://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type='text/css' media="all"/>
+    <link href="../static/css/style.css" rel="stylesheet" type='text/css' media="all"/>
+    <style>
+        body {
+            background: url(../static/images/content.jpg) no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            font-family: 'Muli', sans-serif;
+        }
+    </style>
+        <script src="/static/js/jquery-1.10.2.min.js"></script>
+
+        <script type="text/javascript">
+        $(function () {
+            $("#register_one").click(function () {
+                let url='http://127.0.0.1:8000/register/';
+                let username=$("#firstname1").val();
+                let password=$("#inputPassword1").val();
+                let confirm_password=$("#inputPasswordConfirm1").val();
+                let email=$("#inputEmail1").val();
+                let data={
+                    username:username,
+                    password:password,
+                    email:email,
+                    confirm_password:confirm_password,
+                };
+                $.post(url,data,function (result) {
+                    if(result.status===200){
+                        window.location.href="http://127.0.0.1:8000/"
+                    }else {
+                        alert(result.msg);
+                        window.location.href="http://127.0.0.1:8000/register/"
+                    }
+
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<h1 class="w3ls">注册</h1>
+<div class="content-agileits">
+        <div class="form-group  w3 w3l">
+            <label for="firstname" class="control-label">用户名</label>
+            <input type="text" name="username" class="form-control" id="firstname1" placeholder="用户名" data-error="请输入用户名"
+                   required>
+            <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group w3l agileinfo wthree w3-agileits">
+            <label for="inputEmail" class="control-label">邮箱</label>
+            <input type="email" name="email" class="form-control" id="inputEmail1" placeholder="邮箱"
+                   data-error="请输入正确的邮箱地址" required>
+            <div class="help-block with-errors"></div>
+        </div>
+
+
+        <div class="form-group agileinfo wthree w3-agileits agile">
+            <label for="inputPassword" class="control-label">密码</label>
+            <input type="password" name="password" class="form-control" id="inputPassword1" placeholder="请输入密码"
+                   data-error="密码最小长度为6位"
+                   required>
+            <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="form-group agileinfo wthree w3-agileits agile">
+            <label for="inputPasswordConfirm" class="control-label">确认密码</label>
+            <input type="password" name="confirm_password" class="form-control" id="inputPasswordConfirm1"
+                   placeholder="请再次输入密码"
+                   data-error="两次输入不一致"
+                   required>
+            <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg" id="register_one">注册</button>
+        </div>
+</div>
+
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/validator.min.js"></script>
+</body>
+</html>

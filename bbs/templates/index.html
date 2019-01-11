@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+    吴礼森的博客
+{% endblock %}
+
+
+{% block page_css %}
+    <link href="/static/css/index.css" rel="stylesheet">
+
+{% endblock %}
+{% block page_jq %}
+
+
+{% endblock %}
+
+
+{% block page_head %}
+        {% include "include/Top.html" %}
+
+        {% include "include/Banner.html" %}
+    <div style="margin-top: -300px">
+     {% include "include/Left.html" %}
+
+    </div>
+
+
+
+
+{% endblock %}
+{% block page_main %}
+    <div style="margin-top: 300px">
+    {% include "include/Main.html" %}
+    </div>
+
+{% endblock %}
+

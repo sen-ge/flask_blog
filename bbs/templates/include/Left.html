@@ -1,0 +1,16 @@
+
+<div style="float: left;position: fixed">
+    <img src="/static/images/bg.jpg" style='height: 1300px;width: 220px;margin-top: -400px;z-index: 4;  margin-left: -20px'>
+<aside class="side" style="position: relative;margin-top: -900px;z-index: 5">
+    <div class="about"><i><a href="/"><img src="/static/images/avatar.jpg" id="photo"></a></i>
+    	<ul style="margin-left: 30px">
+    		<li  id="username" ><span style="margin-left: 20px">{{ session.username }}</span></li>
+            <li >我的关注(<span id="guanzhu">{{ session.user_count }}</span>)</li>
+            <li >我的粉丝(<span id="fensi">{{ session.user_is_count }}</span>)</li>
+    	</ul>
+    </div>
+    <div class="weixin"><img src="http://www.yangqq.com/skin/html/images/wx.jpg">
+        <p>关注我 么么哒！</p>
+    </div>
+</aside>
+</div>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="application/javascript">
+        $(function () {
+            let url = "http://127.0.0.1:8000/posts";
+            let data = {wwwe: 7};
+            $.get(url, data, function (result) {
+                $("#postsss").text(result.data[0].post_name);
+            })
+        })
+    </script>
+</head>
+<body>
+<h1 id="postsss">123</h1>
+</body>
+</html>

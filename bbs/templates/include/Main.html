@@ -1,0 +1,42 @@
+
+<main style="width: 88%;margin-left: 180px;z-index: -10;">
+
+        <div class="newsbox">
+{% for classify in classifys %}
+            <section>
+                <div class="news">
+                    <h2 class="newstitle"><span><a href="http://127.0.0.1:8000/?c_id={{ classify.classify_id }}">更多</a></span><b id="classify_name">{{ classify.classify_name }}</b></h2>
+                    <ul>
+                        {% for article  in classify.art_name%}
+                        <li><a href="http://127.0.0.1:8000/detail/?p_id={{ article.post_id }}"><span></span>{{ article.post_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+{% endfor %}
+        </div>
+        <div class="blank"></div>
+        <div class="links">
+            <h2 class="linktitle">合作伙伴</h2>
+            <ul class="link-pic">
+                <li><a href="/"><img src="/static/images/yqlj.png"></a></li>
+                <li><a href="/"><img src="/static/images/yqlj.png"></a></li>
+                <li><a href="/"><img src="/static/images/yqlj.png"></a></li>
+                <li><a href="/"><img src="/static/images/yqlj.png"></a></li>
+                <li><a href="/"><img src="/static/images/yqlj.png"></a></li>
+            </ul>
+            <ul class="link-text">
+                <li><a href="http://www.baidu.com">百度一下,你就知道</a></li>
+                <li><a href="http://www.baidu.com">百度一下,你就知道</a></li>
+                <li><a href="http://www.baidu.com">百度一下,你就知道</a></li>
+                <li><a href="http://www.baidu.com">百度一下,你就知道</a></li>
+                <li><a href="http://www.baidu.com">百度一下,你就知道</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>Copyright 2018 Inc. AllRights Reserved. Design by <a href="/">博客项目</a> 蜀ICP备11002373号-1</p>
+        </div>
+    </div>
+</main>
+<a href="#" class="cd-top cd-is-visible">Top</a>
+

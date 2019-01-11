@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<header>
+    <div class="logo"><a href="#">博客项目</a></div>
+    <div class="top-nav">
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="nav">
+              {% if session.username %}
+                <li><a href="index.html">个人中心</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="" class="glyphicon glyphicon-log-out" href="#"></a>
+                <li><a href="http://127.0.0.1:8000/?u_id={{session.u_id }}">我的帖子</a>
+                <li><a href="index.html">消&nbsp;&nbsp;息(<span>10</span>)</a>
+                <li><a href="#">发&nbsp;&nbsp;帖</a>
+            {% else %}
+                <li><a href="/login/">登&nbsp;&nbsp;录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="" class="glyphicon glyphicon-log-out" href="#"></a>
+            {% endif %}
+
+        </ul>
+    </div>
+    <div class="search">
+        <form action="#" method="post" name="searchform" id="searchform">
+            <input name="keyboard" id="keyboard" class="input_text" value="搜索你喜欢的" style="color: rgb(153, 153, 153);"
+                   onfocus="if(value=='搜索你喜欢的'){this.style.color='#000';value=''}"
+                   onblur="if(value==''){this.style.color='#999';value='搜索你喜欢的'}" type="text">
+            <input name="show" value="title" type="hidden">
+            <input name="tempid" value="1" type="hidden">
+            <input name="tbname" value="news" type="hidden">
+            <input name="Submit" class="input_submit" value="" type="submit">
+        </form>
+    </div>
+</header>
+</body>
+</html>

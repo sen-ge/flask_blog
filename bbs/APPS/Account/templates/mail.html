@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>亲爱的{{ username }}您好</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 感谢您的注册，但是您还需要进行最后一步的认证，请点击下方的链接进行激活</p>
+<a href="{{ url_for('active',_external=True) }}?uid={{ uid }}" target="_blank">立即激活</a>
+<p>如上述链接不可点击，请复制下面的内容到浏览器中打开</p>
+<p>{{ url_for('active',_external=True) }}?uid={{ uid }}</p>
+</body>
+</html>

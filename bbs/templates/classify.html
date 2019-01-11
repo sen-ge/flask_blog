@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>吴礼森的博客</title>
+    <meta name="keywords" content="关键词,关键词,关键词,关键词,5个关键词"/>
+    <meta name="description" content="网站简介，不超过80个字"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/comm.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.js"></script>
+    <![endif]-->
+</head>
+<body>
+        <div>
+            {% include "include/Top.html" %}
+
+            {% include "include/Left.html" %}
+
+        </div>
+
+<main>
+
+
+    <div class="panel panel-default" style="width:80% ;margin-left: 215px;margin-top: 60px;">
+        {% for classify in classifys %}
+            <div class="panel-heading" align="center" style="color: cadetblue;">★★★★★★★★★★★★★★★<span
+                    id=classify_name>{{ classify.classify_name }}</span>★★★★★★★★★★★★★★★
+            </div>
+            <ul class="list-group">
+
+            {% for post in posts %}
+                <li class="list-group-item">
+                    <span><a href="/detail/?p_id={{ post.post_id }}" id="post_name">{{ post.post_name }}</a></span>
+                    <span id="createtime" style="float: right;">{{ post.create_time }}</span>
+                    <span id="commentor" style="float: right;padding-right:20px ;">{% for user in post.username %}
+                        <span>{{ user.username
+                                }}</span>
+                    {% endfor %}
+                        </span>
+
+                </li>
+            {% endfor %}
+        {% endfor %}
+
+        </ul>
+    </div>
+
+
+</main>
+<a href="#" class="cd-top cd-is-visible">Top</a>
+</body>
+</html>

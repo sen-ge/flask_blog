@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>帖子详情页</title>
+    <meta name="keywords" content="关键词,关键词,关键词,关键词,5个关键词"/>
+    <meta name="description" content="网站简介，不超过80个字"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/comment.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/comm.js"></script>
+    <script src="../static/js/modernizr.js"></script>
+    <script type="text/javascript">
+        $(function () {
+        var offOn = true;
+        var $div = $('.focus');
+        $div.on('click', function () {
+            if ($div.offOn) {
+                $div.css('color', '#6666FF');
+                $div.html('❤关注');
+                $div.offOn = false;
+            } else {
+                $div.css('color', 'red');
+                $div.html('已关注');
+                $div.offOn = true;
+            }
+        })
+    })
+    </script>
+    <script type="text/javascript">
+        $(function () {
+        var offOn = true;
+        var $div = $('.shoucang');
+        $div.on('click', function () {
+            if ($div.offOn) {
+                $div.css('color', '#6666FF');
+                $div.html('❤收藏');
+                $div.offOn = false;
+            } else {
+                $div.css('color', 'red');
+                $div.html('已收藏');
+                $div.offOn = true;
+            }
+        })
+    })
+    </script>
+
+
+</head>
+<body>
+<div>
+            {% include "include/Top.html" %}
+
+            {% include "include/Left.html" %}
+</div>
+<main>
+    <div class="main-content">
+
+        <div class="welcome">您现在的位置是：<a href="/">首页</a>><a href="/?c_id={{ classify.classify_id }}" name="classify_name">{{ classify.classify_name }}</a></div>
+        <div class="blogbox">
+
+
+            <div class="contentbox">
+
+                <h2 class="contitle" id="post_name" style="font-style: italic;color: blue">{{ details.post_name }}</h2>
+                <p class="bloginfo"><span id="author">{{ user.username }}</span><span id="createtime">2018年3月19日</span><span><a
+                        href="/" id="classify_name">{{ classify.classify_name }}</a></span> <a><span class="focus ">❤关注</span></a></p>
+                <p class="jianjie"
+                   style="max-width: 80%;max-height:60px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: medium;color: #09B1B9">
+                    简介:&nbsp;&nbsp;{{ details.post_content }}</p>
+                <div class="entry" id="post_content">
+
+                    <p id="post_content1">{{ details.post_content }}</p>
+                    <p><strong>上个图：</strong></p>
+                    <p><img src="http://www.yangqq.com/d/file/jstt/bj/2015-01-09/bb9e1b25215426d6c375e453c756f136.jpg">
+                    </p>
+
+                </div>
+
+                <div class="reprint">转载请说明出处：<a href="" title="" target="_blank" name="username">用户名</a> » <a href=""
+                                                                                                              title=""
+                                                                                                              target="_blank">欢迎来到我的博客</a>
+                </div>
+                <div class="zambia" style="text-align: center">
+                    <a href="#" name="zambia" rel=""><span class="glyphicon glyphicon-thumbs-up"></span> 赞</a>
+                    <a><span class="shoucang glyphicon ">
+    ❤收藏
+</span></a>
+
+                    <a href="#" class="share"><span class="glyphicon glyphicon-share"></span> 分享 </a></div>
+
+
+                <div class="nextinfo">
+                    <p>上一篇：<a href="#">楼主上一篇博客</a></p>
+                    <p>下一篇：<a href="#">楼主下一篇博客</a></p>
+                </div>
+                </div>
+
+
+                <div class="pinlun">
+                <h2 class="newstitle" id="comment_"><b>评论</b></h2>
+
+                <div class="gbok">
+                    <div class="container">
+                        <div class="commentbox">
+                            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea"
+                                      id="content"></textarea>
+                            {% if  session.username %}
+                            <div>{{ user.username }}</div>
+                            {% else %}
+                            <div class="comment-form-text">请先 <a href="/login/">登录</a> 或 <a href="/register/">注册</a>，也可匿名评论
+                            {% endif %}
+                                <div class="btn btn-info pull-right" id="comment">评论</div>
+                            </div>
+                            <p id="replyName" style="display: none">我是用户名</p>
+                        </div>
+                        <div class="comment-list">
+
+                        </div>
+                    </div>
+
+                    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+                    <script type="text/javascript" src="../static/js/jquery.comment.js"></script>
+                    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+                    <script type="text/javascript">
+                        //帖子
+                        {#$(function () {#}
+                        {#    let url = "http://127.0.0.1:8000/posts";#}
+                        {#    let data = {post_id: 3};#}
+                        {#    $.get(url, data, function (result) {#}
+                        {#        $("#post_name").text(result.data[0].post_name);#}
+                        {#        $("#author").text(result.data[0].poster);#}
+                        {#        $("#createtime").text(result.data[0].create_time);#}
+                        {#        $(".jianjie").text(result.data[0].post_content);#}
+                        {#        $("#post_content").text(result.data[0].post_content);#}
+                        {#    })#}
+{#                        {);#}
+
+                        //初始化数据
+                        var arrs = [
+                            {
+
+                                id: 1,
+                                img: "#",
+                                replyName: "王兵杰",
+                                beReplyName: "匿名",
+                                content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+                                time: "2017-10-17 11:42:53",
+                                address: "深圳",
+                                osname: "",
+                                browse: "谷歌",
+                                replyBody: 0
+                            },
+                            {
+                                id: 2,
+                                img: "#",
+                                replyName: "匿名",
+                                beReplyName: "",
+                                content: "到菜市场买菜，看到一个孩子在看摊，我问：“一只鸡多少钱？” 那孩子回答：“23。” 我又问：“两只鸡多少钱？” 孩子愣了一下，一时间没算过来，急中生智大吼一声：“一次只能买一只！”",
+                                time: "2017-10-17 11:42:53",
+                                address: "深圳",
+                                osname: "",
+                                browse: "谷歌",
+                                replyBody: [{
+                                    id: 3,
+                                    img: "",
+                                    replyName: "帅大叔",
+                                    beReplyName: "匿名",
+                                    content: "来啊，我们一起吃鸡",
+                                    time: "2017-10-17 11:42:53",
+                                    address: "",
+                                    osname: "",
+                                    browse: "谷歌"
+                                }]
+                            },
+                            {
+                                id: 3,
+                                img: "#",
+                                replyName: "帅大叔",
+                                beReplyName: "匿名",
+                                content: "同学聚会，看到当年追我的屌丝开着宝马车带着他老婆来了，他老婆是我隔壁宿舍的同班同学，心里后悔极了。",
+                                time: "2017-10-17 11:42:53",
+                                address: "深圳",
+                                osname: "win10",
+                                browse: "谷歌",
+                                replyBody: []
+                            }
+                        ];
+                        $(function () {
+                            let url = "http://127.0.0.1:8000/comments";
+
+                            let data = {post_id: {{details.post_id}}};
+
+                            $.get(url, data, function (result) {
+<<<<<<< HEAD
+                                let aaa = result.data;
+                                for (i of aaa) {arrs.push(i)}
+=======
+                                     let aaa = result.data;
+                                arrs.push(aaa[0]);
+>>>>>>> 9b7c87f9b608a431882d689417f480659b8e3647
+                                $(".comment-list").addCommentList({data: arrs, add: ""});
+                                $("#comment").click(function () {
+                                    var obj = new Object();
+                                    obj.img = "static/images/content.jpg";
+                                    // obj.replyName="匿名";
+                                    obj.replyName = $("#replyName").text();
+                                    obj.content = $("#content").val();
+                                    obj.browse = "深圳";
+                                    obj.osname = "win10";
+                                    obj.replyBody = "";
+                                    $(".comment-list").addCommentList({data: [], add: obj});
+                                    let uurl = "http://127.0.0.1:8000/comments";
+                                    let ddate = {
+                                        replyName : $("#replyName").text(),
+                                        content : $("#content").val(),
+                                        post_id: {{details.post_id}},
+                                    };
+                                    $.post(uurl,ddate,function () {
+                                    })
+                                });
+                            })
+                        });
+
+                        //ajax点赞 关注 变红
+                        $(function () {
+                            $(".zambia a").click(function () {
+                                $(this).css("color", "red");
+                            })
+                        })
+
+
+                    </script>
+                </div>
+            </div>
+
+        </div>
+        <div class="rside">
+            <div class="news">
+                <h2 class="newstitle"><b>文章排行</b></h2>
+                <ul>
+                    <li><a href="/"><span>08-30</span>如何快速建立自己的个人博客网站</a></li>
+                    <li><a href="/"><span>08-30</span>个人博客，属于我的小世界！</a></li>
+                    <li><a href="/"><span>08-30</span>网易博客关闭，何不从此开始潇洒行走江湖！</a></li>
+                    <li><a href="/"><span>08-30</span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>
+                    <li><a href="/"><span>08-30</span>帝国cms 循环调用子栏目信息以及头条图片</a></li>
+                    <li><a href="/"><span>08-30</span>我是怎么评价自己的？</a></li>
+                    <li><a href="/"><span>08-30</span>html5 个人博客模板《蓝色畅想》</a></li>
+                    <li><a href="/"><span>08-30</span>【匆匆那些年】总结个人博客经历的这四年</a></li>
+                </ul>
+            </div>
+            <div class="news">
+                <h2 class="newstitle"><b>本栏推荐</b></h2>
+                <ul>
+                    <li><a href="/"><span>08-30</span>如何快速建立自己的个人博客网站</a></li>
+                    <li><a href="/"><span>08-30</span>个人博客，属于我的小世界！</a></li>
+                    <li><a href="/"><span>08-30</span>网易博客关闭，何不从此开始潇洒行走江湖！</a></li>
+                    <li><a href="/"><span>08-30</span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>
+                    <li><a href="/"><span>08-30</span>帝国cms 循环调用子栏目信息以及头条图片</a></li>
+                    <li><a href="/"><span>08-30</span>我是怎么评价自己的？</a></li>
+                    <li><a href="/"><span>08-30</span>html5 个人博客模板《蓝色畅想》</a></li>
+                    <li><a href="/"><span>08-30</span>【匆匆那些年】总结个人博客经历的这四年</a></li>
+                </ul>
+            </div>
+            <div class="news">
+                <h2 class="newstitle"><b>栏目更新</b></h2>
+                <ul>
+                    <li><a href="/"><span>08-30</span>如何快速建立自己的个人博客网站</a></li>
+                    <li><a href="/"><span>08-30</span>个人博客，属于我的小世界！</a></li>
+                    <li><a href="/"><span>08-30</span>网易博客关闭，何不从此开始潇洒行走江湖！</a></li>
+                    <li><a href="/"><span>08-30</span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>
+                    <li><a href="/"><span>08-30</span>帝国cms 循环调用子栏目信息以及头条图片</a></li>
+                    <li><a href="/"><span>08-30</span>我是怎么评价自己的？</a></li>
+                    <li><a href="/"><span>08-30</span>html5 个人博客模板《蓝色畅想》</a></li>
+                    <li><a href="/"><span>08-30</span>【匆匆那些年】总结个人博客经历的这四年</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright 2018 Inc. AllRights Reserved. Design by <a href="/">XXX个人博客</a> 蜀ICP备11002373号-1</p>
+        </div>
+    </div>
+</main>
+<a href="#" class="cd-top cd-is-visible">Top</a>
+</body>
+</html>
